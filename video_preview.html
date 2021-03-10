@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Video Preview</title>
+    <style>
+        .video-wrapper{
+            width:300px;
+            border:1px solid red;
+        }
+        .video-wrapper video{
+            vertical-align: top;
+            object-fit:contain;
+            height:auto;
+            width:100%;
+        }
+        ul{
+            list-style: none;
+        }
+        ul{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img{
+            vertical-align:top
+        }
+    </style>
+</head>
+<body>
+    <div class="video-wrapper">
+        <video preload="metadata" muted poster="https://js.tusij.com/custom/img/banner/personalVip.jpg" src="https://img1.tusij.com/ips_video_previews/2021-02-23/60/604a2af3-e9b4-4fb9-9205-266e350b2ec9.mp4?auth_key=1640160089-0-0-77790f61f4db5079938732c434263440">
+        </video>
+    </div>
+<script>
+    const $ = s => document.querySelector(s)
+    $('.video-wrapper').addEventListener('mouseenter',()=>{
+        const $video = $('.video-wrapper video')
+        $video.play()
+        $video.style.height = $('.video-wrapper video').clientHeight + 'px'
+    })
+    $('.video-wrapper').addEventListener('mouseleave',()=>{
+        const $video = $('.video-wrapper video')
+        $video.pause()
+        $video.src=$('.video-wrapper video').src
+        $video.currentTime = 0
+    })
+</script>
+</body>
+</html>
